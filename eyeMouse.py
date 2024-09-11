@@ -16,14 +16,18 @@ while True:
           for landmark_point in one_face[474:478]: #points number of eyes
                x = int(landmark_point.x * window_width) #changing the decimals according to window width and height 
                y = int(landmark_point.y * window_height) #using int
-               print(x, y) 
+               # print(x, y) 
                cv2.circle(image,(x,y),3,(0,0,225))
           left_eye = [one_face[145],one_face[159]]  #getting points of left eye
           for landmark_point in left_eye: #same for let eye
                x = int(landmark_point.x * window_width) 
                y = int(landmark_point.y * window_height) 
-               print(x, y) 
-               cv2.circle(image,(x,y),3,(0,0,10))     
+               # print(x, y) 
+               cv2.circle(image,(x,y),3,(0,0,10)) 
+          if(left_eye[0].y - left_eye[1].y < 0.01): #checking if the eye is closed by the distance between 2 points
+                     pyautogui.click() #to click
+                     pyautogui.sleep(2) #to wait or 2 sec
+                     print("mouse clicked")
         
      cv2.imshow("Eye mouse" , image)
      key = cv2.waitKey(100)
