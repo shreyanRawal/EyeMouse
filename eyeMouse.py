@@ -4,6 +4,8 @@ import pyautogui
 face_landmark = mediapipe.solutions.face_mesh.FaceMesh(refine_landmarks = True) #using mediapipe solutions and faceMesh to detect facial landmarks. reining it to make it more accurate in some areas
 
 camera = cv2.VideoCapture(0) #have only 1 camera
+screen_w , screen_h = pyautogui.size()
+
 while True:
      _, image = camera.read()
      image = cv2.flip(image,1) #lipping image as it shows opposite, 1 for horizontal
@@ -13,10 +15,15 @@ while True:
      all_faces = processed_image.multi_face_landmarks #storing all landmarks of faces
      if all_faces:
           one_face = all_faces[0].landmark #getting landmark of one face, ie the first detected face
-          for landmark_point in one_face[474:478]: #points number of eyes
+          for id,landmark_point in enumerate(one_face[474:478]): #points number of eyes
                x = int(landmark_point.x * window_width) #changing the decimals according to window width and height 
                y = int(landmark_point.y * window_height) #using int
                # print(x, y) 
+               if id ==1: #to track only one point out of 4, we can use others too 
+                     mouse_x = int(screen_w / window_width * x) #getting x and y axis according to screen and window size
+                     mouse_y = int(screen_h / window_height * y)
+                     pyautogui.moveTo(mouse_x,mouse_y)
+
                cv2.circle(image,(x,y),3,(0,0,225))
           left_eye = [one_face[145],one_face[159]]  #getting points of left eye
           for landmark_point in left_eye: #same for let eye
