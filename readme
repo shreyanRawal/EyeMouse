@@ -1,0 +1,21 @@
+#  Eye Mouse
+
+Eye Mouse is an AI-based project that lets you control your computer mouse using your eyes.  
+It uses computer vision and eye-tracking techniques to detect gaze direction and map it to cursor movements.  
+This project aims to improve accessibility and provide hands-free interaction with computers.
+
+---
+
+## Features
+- Control the mouse cursor using your eyes
+- Smooth and real-time tracking
+- Hands-free computer interaction
+- Built with computer vision & machine learning
+- Designed for accessibility and innovation
+
+---
+
+## 🛠Tech Stack
+- **Programming Language**: Python  
+- **Libraries**: OpenCV, dlib/mediapipe, pyautogui  
+- **Hardware**: Standard webcam  
