@@ -15,7 +15,7 @@ This project aims to improve accessibility and provide hands-free interaction wi
 
 ---
 
-## 🛠Tech Stack
+## Tech Stack
 - **Programming Language**: Python  
 - **Libraries**: OpenCV, dlib/mediapipe, pyautogui  
 - **Hardware**: Standard webcam  
